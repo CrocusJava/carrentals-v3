@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/xhtml/index.xhtml">
+	<ui:define name="content">
+		<h:dataTable value="#{carmb.carList}" var="car" styleClass="cartop">
+			<h:column>
+				<h:graphicImage library="images" name="#{car.photo}"></h:graphicImage>
+			</h:column>
+			<h:column>
+			<h:form styleClass="button">
+				<h:panelGrid columns="2" styleClass="description">
+					<h:outputText value="Brand" />
+					<h:outputText value="#{car.brand}" />
+					<h:outputText value="Model" />
+					<h:outputText value="#{car.model}" />
+					<h:outputText value="Quantity doors" />
+					<h:outputText value="#{car.quantityDoors}" />
+					<h:outputText value="Quantity seats" />
+					<h:outputText value="#{car.quantitySeats}" />
+					<h:outputText value="Transmission" />
+					<h:outputText value="#{car.transmission}" />
+					<h:outputText value="Place get" />
+					<h:outputText value="#{car.place.city} #{car.place.description}" />
+					<h:outputText value="Price per day" />
+					<h:outputText value="#{car.price}$" />
+				</h:panelGrid>
+					<h:commandLink rendered="#{usermb.user!=null}" action="#{ordermb.showOrderForm(car)}" value="Make order"></h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>

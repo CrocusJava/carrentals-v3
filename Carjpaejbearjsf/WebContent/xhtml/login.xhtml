@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<body>
+	<div id="login">
+		<ul>
+			<li><h:form styleClass="button" rendered="#{usermb.user==null || usermb.user.role==null}">
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Login" />
+						<h:inputText value="#{usermb.login}" />
+						<h:outputLabel value="Password" />
+						<h:inputSecret value="#{usermb.password}" />
+						<h:outputLabel />
+						<h:commandLink action="#{usermb.findUser}" value="Login"></h:commandLink>
+						<h:outputLabel />
+						<h:commandLink action="#{usermb.registration}" value="Registration"></h:commandLink>
+					</h:panelGrid>
+				</h:form> 
+				<h:form styleClass="button" rendered="#{usermb.user.role=='user'}">
+					<h:panelGrid columns="1">
+						<h:outputLabel value="Hello #{usermb.user.name}" />
+						<h:commandLink action="#{usermb.outUser}" value="Out"></h:commandLink>
+					</h:panelGrid>
+				</h:form> 
+				<h:form styleClass="button" rendered="#{usermb.user.role=='admin'}">
+					<h:panelGrid columns="1">
+						<h:outputLabel value="Hello admin #{usermb.user.name}" />
+						<h:commandLink action="#{usermb.outUser}" value="Out"></h:commandLink>
+					</h:panelGrid>
+				</h:form> 
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

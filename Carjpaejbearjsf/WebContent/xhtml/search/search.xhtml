@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/xhtml/index.xhtml">
+	<ui:define name="content">
+		<h:form styleClass="button">
+			<h:panelGrid columns="2" styleClass="description">
+				<h:outputText value="Place get" />
+				<h:selectOneMenu value="#{ordermb.placeGet}" required="true" requiredMessage="You must select palce get">
+					<f:selectItems value="#{ordermb.placeList}" var="place" itemLabel="#{place.city} #{place.description}" itemValue="#{place.idPlace}"/>
+				</h:selectOneMenu>
+				<h:outputText value="Place return" />
+				<h:selectOneMenu value="#{ordermb.placeReturn}" required="true" requiredMessage="You must select palce return">
+					<f:selectItems value="#{ordermb.placeList}" var="place" itemLabel="#{place.city} #{place.description}" itemValue="#{place.idPlace}"/>
+				</h:selectOneMenu>
+				<h:outputText value="Date get" />
+				<h:inputText value="#{ordermb.dateGet}" required="true" requiredMessage="You must enter date get">  
+  					 <f:convertDateTime pattern="yyyy-MM-dd"/>  
+				</h:inputText>
+				<h:outputText value="Date return" />
+				<h:inputText value="#{ordermb.dateReturn}" required="true" requiredMessage="You must date return" >  
+  					 <f:convertDateTime pattern="yyyy-MM-dd" />  
+				</h:inputText>
+				<h:outputText value="Price not more" />
+				<h:inputText id="price" value="#{ordermb.price}" required="true" requiredMessage="You must enter price"/>
+			</h:panelGrid>
+			<h:messages/>
+			<h:commandLink action="#{ordermb.showSerchedCars}" value="Search cars"></h:commandLink>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+
+</html>

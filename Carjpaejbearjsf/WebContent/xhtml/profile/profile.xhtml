@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/xhtml/index.xhtml">
+	<ui:define name="content">
+		<h:dataTable  value="#{usermb.user}" var="userProfile">
+			<h:column>
+				<h:form styleClass="button">
+					<h:panelGrid columns="2" styleClass="description">
+						<h:outputText value="Login" />
+						<h:inputText value="#{usermb.user.login}" required="true" requiredMessage="You must enter login"/>
+						<h:outputText value="Password" />
+						<h:inputText value="#{userProfile.password}" required="true" requiredMessage="You must enter password"/>
+						<h:outputText value="Name" />
+						<h:inputText value="#{userProfile.name}" required="true" requiredMessage="You must enter name"/>
+						<h:outputText value="Surname" />
+						<h:inputText value="#{userProfile.surname}" required="true" requiredMessage="You must enter surname"/>
+						<h:outputText value="Middlename" />
+						<h:inputText value="#{userProfile.middlename}" required="true" requiredMessage="You must enter middlename"/>
+						<h:outputText value="email" />
+						<h:inputText value="#{userProfile.email}" required="true" requiredMessage="You must enter email"/>
+					</h:panelGrid>
+					<h:panelGrid columns="2" styleClass="description" rendered="#{usermb.client!=null}">
+						<h:outputText value="Phone" />
+						<h:inputText value="#{userProfile.client.phonenumber}" required="true" requiredMessage="You must enter phonenumber"/>
+						<h:outputText value="Passport number" />
+						<h:inputText value="#{userProfile.client.passportnumber}" required="true" requiredMessage="You must enter passportnumber"/>
+						<h:outputText value="Passport series" />
+						<h:inputText value="#{userProfile.client.passportseries}" required="true" requiredMessage="You must enter passportseries"/>
+						<h:outputText value="Birthday" />
+						<h:inputText value="#{userProfile.client.birthday}" required="true" requiredMessage="You must enter birthday"><f:convertDateTime pattern="yyyy-MM-dd"/> </h:inputText>
+					</h:panelGrid>
+					<h:messages/>
+					<h:commandLink action="#{usermb.updateProfile}" value="Update" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>

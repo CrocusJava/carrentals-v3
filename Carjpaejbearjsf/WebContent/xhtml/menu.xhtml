@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<body>
+	<div id="menu">
+		<ul class="menu">
+			<li class="menu">
+			<h:form>
+				<h:commandLink action="#{carmb.getListCars}" value="Cars"></h:commandLink>
+			</h:form> 
+			</li>
+			<li class="menu">
+			<h:form>
+				<h:commandLink action="#{ordermb.showSearchForm}" value="Search"></h:commandLink>
+			</h:form> 
+			</li>
+			<li class="menu">
+			<h:form rendered="#{usermb.user.role=='user' || usermb.user.role=='admin'}">
+					<h:commandLink action="#{usermb.showUserProfile}" value="Profile"></h:commandLink>
+			</h:form> 
+			</li>
+			<li class="menu">
+			<h:form rendered="#{usermb.user.role=='admin'}">
+					<h:commandLink action="#{ordermb.showOrderList}" value="List of orders"></h:commandLink>
+			</h:form> 
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

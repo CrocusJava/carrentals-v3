@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/xhtml/index.xhtml">
+	<ui:define name="content">
+		<h:dataTable  value="#{usermb.userNew}" var="userProfile">
+			<h:column>
+				<h:form styleClass="button">
+					<h:panelGrid columns="2" styleClass="description">
+						<h:outputText value="Login" />
+						<h:inputText value="#{userProfile.login}" required="true" requiredMessage="You must enter login"/>
+						<h:outputText value="Password" />
+						<h:inputText value="#{userProfile.password}" required="true" requiredMessage="You must enter password"/>
+						<h:outputText value="Name" />
+						<h:inputText value="#{userProfile.name}" required="true" requiredMessage="You must enter name"/>
+						<h:outputText value="Surname" />
+						<h:inputText value="#{userProfile.surname}" required="true" requiredMessage="You must enter surname"/>
+						<h:outputText value="Middlename" />
+						<h:inputText value="#{userProfile.middlename}" required="true" requiredMessage="You must enter middlename"/>
+						<h:outputText value="email" />
+						<h:inputText value="#{userProfile.email}" required="true" requiredMessage="You must enter email"/>
+					</h:panelGrid>
+					<h:messages/>
+					<h:commandLink action="#{usermb.saveNewUser}" value="Create acount" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>
